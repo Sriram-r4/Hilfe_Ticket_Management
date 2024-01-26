@@ -1,0 +1,80 @@
+.text {
+    color: #161515;
+    font-family: "Inter-Regular", Helvetica !important;
+    font-size: 1.071vw;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+       -webkit-appearance: none;
+        margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.title {
+    color: #161515;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 1.42vw;
+    font-weight: 700;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.temp-color{
+    background-color: #3A2ADF  !important;
+    text-align: center;
+  }
+
+.txt-btn{
+    font-family: "Inter-Bold ", Helvetica ;
+    font-size: 1.42vw !important;
+    color: #ffffff !important;
+    
+}
+input:focus,input:hover {
+    box-shadow: none !important ;
+    border: solid  0.5px  #3A2ADF!important;
+    outline: none !important;
+
+}
+
+.otp{
+    width:2.5em !important; 
+    height:2.5em !important;
+  
+}
+
+
+@media screen and (min-width:768px) and (min-height:515px) {
+    .right-container {
+        left:60vw;
+        background-color: #ffffff;
+        width:32vw;
+        height: fit-content;
+        font-family: "Inter-Regular", Helvetica;
+        border-radius: 2%;
+        position: absolute;
+        top:20vh;
+        bottom: 10%;
+        padding: 1%;
+
+    }
+}
+
+.icon{
+    width:5px;
+    height: fit-content;
+}
+.arrow{
+    width: 5px;
+    height: 5px;
+}

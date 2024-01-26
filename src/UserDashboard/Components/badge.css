@@ -1,0 +1,129 @@
+.badges-usr1{
+    display:flex;
+    width: inherit;
+    justify-content: space-around;
+    top:25%;
+    left:0;
+
+}
+
+.card-badge-usr1{
+    display:flex;
+    position: relative;
+    width: 275px !important;
+    height: 130px  !important;
+    border-radius: 4%;
+    background-color:white;
+    text-align: center;
+    padding: 1em;
+    align-items: center;   
+}
+
+.card-circle-usr1{
+    background-color: rgb(233, 226, 226);
+    border-radius: 100%;
+    display: flex;
+    position: relative;
+    height: 4em;
+    width: 4em;
+    align-items: center;
+    justify-content: center;
+    padding: .5em;
+    margin: auto;
+    font-size: calc(1.275em + .3vw)!important;
+  
+}
+.card-text1 {
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 28px!important;
+    font-weight: 300 ;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+  
+  }
+
+@media  screen and (max-width:950px) {
+    .card-badge-usr1{
+        display:flex;
+        position: relative;
+        width: 200px !important;
+        height: 100px  !important;
+        border-radius: 5%;
+        background-color:white;
+        text-align: center;
+        padding: 1em;
+        align-items: center;   
+    }
+    .card-text-usr1 {
+        font-family: "Inter-Regular", Helvetica;
+        font-size: 16px!important;
+        font-weight: 500 !important;
+        left: 0;
+        letter-spacing: 0;
+        line-height: normal;
+      
+      }
+    
+    
+}
+
+@media  screen and (max-width:670px) {
+    .card-badge-usr1{
+        display:flex;
+        position: relative;
+        width: 175px !important;
+        height: 85px !important;
+        border-radius: 5%;
+        background-color:white;
+        text-align: center;
+       justify-content: stretch;
+        align-items: center;   
+    }
+    .card-circle-usr1{
+        background-color: rgb(233, 226, 226);
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:12em;
+        height:12em;
+        margin-inline: auto;
+        font-size: calc(0.375em + .1vw)!important;
+      
+    }
+    .card-text-usr1 {
+        font-family: "Inter-Regular", Helvetica;
+        font-size: 18px !important;
+        font-weight: 500 ;
+        left: 0;
+        letter-spacing: 0;
+        line-height: normal;
+      
+      }
+      .badges-usr1{
+        display:flex;
+        height: 5em;
+        width: 100%;
+        justify-content: space-around;
+        top:25%;
+    
+    }
+    
+    
+}
+@media screen  and (max-width:480px){
+    .card-badge-usr1{
+        width:20em !important;
+        height:6em !important;
+    }
+    .card-circle-usr1{
+        width:8em;
+        height:8em;
+    }
+    .card-text-usr1 {
+        font-size: calc(1.505em + .1vw) !important;
+        font-weight: 700 ;
+      }
+    
+}

@@ -1,0 +1,25 @@
+.constructframe {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    left: 0;
+    margin-inline: auto;
+    right: 0;
+    top: 30vh;
+
+}
+
+.construct{
+    width: calc(60rem  + 1vw);
+    
+}
+
+
+@media screen and (max-width:600px) {
+    .construct{
+        width: calc(35rem  + 1vw);
+        
+    } 
+}

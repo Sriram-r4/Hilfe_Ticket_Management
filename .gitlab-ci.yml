@@ -1,0 +1,138 @@
+# stages are run in the order given below
+stages:
+  - set_envvar
+  - prep_server
+  - build   # this pipeline doesn't use docker. It uses pm2
+  - test
+  - deploy
+
+# variables given here are available for all jobs
+variables:
+  DEPLOYMENT_DIR: "/home/gitlab-runner/Documents/project_code" # all files and dir inside must be owned by ops:ops. If owner is gitlab-runner:gitlab-runner I get an error when running rsync --delete
+  GET_SOURCES_ATTEMPTS: "10"
+  GIT_DEPTH: "1"
+  BRANCH_PROD: "main"
+  BRANCH_DEV: "development"
+  PORT_PROD: "2345"
+  PORT_DEV: "3483"
+  ENV_FILE: ".env" 
+  PM2_NAME: "hilfe-amepos"
+
+  # PM2_NAME: "crsquare-frontend-guardian"
+
+
+default:
+  tags:
+    - droplet-reactjs
+    - shell
+
+# cache preserves file contents between jobs
+cache:
+  key: ${CI_COMMIT_SHA}
+  paths:
+    - $ENV_FILE
+
+
+###################################
+
+set_envvar_dev_job:
+  stage: set_envvar
+  script:
+    # Environment variables. .env file is used by django settings.py and docker-compose
+    - echo -e "\nHOSTING_ENV=development" > $ENV_FILE
+    - source $ENV_FILE
+    - cp -v /home/gitlab-runner/Documents/secrets/$CI_PROJECT_NAME/$HOSTING_ENV/.env .
+    - echo -e "\nDEPLOYMENT_DIR=/home/gitlab-runner/Documents/project_code"
+    - echo -e "\nHOSTING_ENV=development" >> $ENV_FILE
+    - echo HOST=127.0.0.1 >> $ENV_FILE
+    - echo SKIP_PREFLIGHT_CHECK=true >> $ENV_FILE
+    - echo PORT=$PORT_PROD >> $ENV_FILE
+    - echo CI_PROJECT_NAME=$CI_PROJECT_NAME >> $ENV_FILE # useful in manually running docker-compose
+  rules:
+    - if: $CI_COMMIT_BRANCH == $BRANCH_DEV
+      when: always
+
+set_envvar_prod_job:
+  stage: set_envvar
+  script:
+    # Environment variables. .env file is used by django settings.py and also docker-compose
+    
+    - echo -e "\nHOSTING_ENV=production" > $ENV_FILE
+    - source $ENV_FILE
+    - cp -v /home/gitlab-runner/Documents/secrets/$CI_PROJECT_NAME/$HOSTING_ENV/.env .
+    - echo -e "\nDEPLOYMENT_DIR=/home/gitlab-runner/Documents/project_code"
+    - echo -e "\nHOSTING_ENV=production" >> $ENV_FILE
+    - echo HOST=127.0.0.1 >> $ENV_FILE
+    - echo SKIP_PREFLIGHT_CHECK=true >> $ENV_FILE
+    - echo PORT=$PORT_PROD >> $ENV_FILE
+    - echo CI_PROJECT_NAME=$CI_PROJECT_NAME >> $ENV_FILE # useful in manually running docker-compose
+    
+  rules:
+    - if: $CI_COMMIT_BRANCH == $BRANCH_PROD
+      when: always
+
+
+prep_server_job:
+  stage: prep_server
+  script:
+    # project related files and dir
+    - source $ENV_FILE
+    # - cp -v /home/gitlab-runner/Documents/secrets/$CI_PROJECT_NAME/settings_secret.py ./saleor/
+    # - cp -v /home/gitlab-runner/Documents/secrets/$CI_PROJECT_NAME/$HOSTING_ENV/.env $DEPLOYMENT_DIR/$CI_PROJECT_NAME/$HOSTING_ENV/
+    - mkdir -p -v $DEPLOYMENT_DIR/$CI_PROJECT_NAME/$HOSTING_ENV
+    - rsync -rlvv --chown=gitlab-runner:gitlab-runner --chmod=774 . $DEPLOYMENT_DIR/$CI_PROJECT_NAME/$HOSTING_ENV --delete --force
+    # - cp -v /home/gitlab-runner/Documents/secrets/$CI_PROJECT_NAME/$HOSTING_ENV/.env $DEPLOYMENT_DIR/$CI_PROJECT_NAME/$HOSTING_ENV/
+
+    # - rsync -rlv --chown=gitlab-runner:gitlab-runner --chmod=774 . $DEPLOYMENT_DIR/$CI_PROJECT_NAME/$HOSTING_ENV --delete --force
+  rules:
+    - if: $CI_COMMIT_BRANCH == $BRANCH_PROD || $CI_COMMIT_BRANCH == $BRANCH_DEV
+
+
+# build_job:
+#   stage: build
+#   script:
+#     - source $ENV_FILE
+#     - docker build -t $CI_PROJECT_NAME:$HOSTING_ENV . 
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == $BRANCH_PROD || $CI_COMMIT_BRANCH == $BRANCH_DEV
+#       changes:
+#         - Dockerfile
+#         - package.json
+#         - package-lock.json
+
+
+test_job:
+  stage: test
+  script:
+    - echo "NO TESTS YET"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $BRANCH_PROD || $CI_COMMIT_BRANCH == $BRANCH_DEV
+
+
+deploy_job:
+  stage: deploy
+  script:
+    # docker-compose
+    # the variables are interpreted and substituted by gitlab first, and not by docker-compose
+    - source $ENV_FILE
+    - cd $DEPLOYMENT_DIR/$CI_PROJECT_NAME/$HOSTING_ENV
+    # - docker stop $CI_PROJECT_NAME-$HOSTING_ENV || exit 0
+    # - docker rm $CI_PROJECT_NAME-$HOSTING_ENV || exit 0
+    # - docker-compose -p $CI_PROJECT_NAME-$HOSTING_ENV down
+    # - docker-compose -p $CI_PROJECT_NAME-$HOSTING_ENV up -d
+    # I had to give a project name. Otherwise I could not run multiple docker-compose.yaml in the same host
+    - pm2 stop $PM2_NAME || echo "process not found"; pm2 delete $PM2_NAME || echo "process not found"
+    - npm install
+    #- pm2 --name $PM2_NAME start 'yarn start'
+    # - npm install
+    # - pm2 --name $PM2_NAME start 'yarn run dev'
+    - pm2 --name $PM2_NAME start 'npm start --port $PORT BROWSER="none"'
+  rules:
+    - if: $CI_COMMIT_BRANCH == $BRANCH_PROD || $CI_COMMIT_BRANCH == $BRANCH_DEV
+  environment:
+    name: production
+    url: http://hilfe.amepos.in
+
+    # name: production
+    # url: https://guardian.crsquare.finance
+

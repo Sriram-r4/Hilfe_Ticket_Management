@@ -1,0 +1,140 @@
+.head{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    grid-template-rows: 1fr;
+    padding-left: 1%;
+    grid-template-areas: "search profile";
+}
+.profile-box {
+    grid-area: profile;
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    
+}
+@media screen and (max-width:600px) {
+  .drop{
+    width: 4.5rem !important;
+    margin-left: 0% !important;
+  }
+
+  .text-account{
+    font-size: calc(0.875rem + .2vw) !important;
+    
+}
+.head{
+    grid-template-columns: 6fr 6fr !important;
+}
+.profile-icon {
+    margin: 0;
+}
+.custom-elements{
+    margin-left: 1px !important;
+}
+
+
+}
+.text-account{
+    font-size: calc(1.375rem + .2vw);
+    width: fit-content;
+    
+}
+.profile-icon {
+    width: 1em;
+    height: 1em;
+    margin-inline: auto;
+}
+
+.search-input {
+    display: flex;
+    flex-wrap: nowrap !important;
+    max-width: 45rem;
+    position: relative;
+    align-items: center;
+    border: 1px solid rgb(158, 158, 158);
+    border-radius: 8px;
+    background-color: #fff;
+    margin:.3rem 4%;
+    padding: 2%;
+    z-index: 1;
+    height: 3.5rem;
+
+}
+
+.search-input:focus,.search-input:hover{
+    border: 1px solid #3A2ADF;
+}
+
+.search{
+    width: 90% !important;
+    min-width: 20px !important;
+    height: calc(25px + .1vw) !important;   
+    border: none !important;
+    box-shadow: none !important;
+    z-index: 1;
+}
+
+.search:hover,.search:focus{
+  border: none !important;
+  outline: none !important;
+}
+
+.search-icon{
+    width:calc( 18px + .1vw) !important;
+    height:calc(18px + .1vw) !important ;
+    color: gray;
+}
+.search-icon:hover ,.search-icon:focus{
+    width:calc(18px + .1vw) !important;
+    height:calc(18px + .1vw) !important ;
+    color: #3A2ADF;
+}
+.custom-elements{
+    grid-area: search;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  
+    margin-left: 1rem;
+    
+}
+
+.drop{
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 0%;
+    width: 7rem;
+    border: 1px solid rgb(158, 158, 158);
+    height: 3.5rem;
+    
+  }
+
+  .drop:focus,.drop:hover{
+    border: 1px solid #3A2ADF;
+  }
+
+  .dropdown{
+    position: relative;
+    height: inherit;
+    color: rgb(158, 158, 158) ;
+  }
+
+  .dropdown:hover{
+    color: #3A2ADF;
+  }
+
+  .icon-circle{
+    border-radius: 100%;
+    background-color:  #f4f4f4;
+    border-style: none;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

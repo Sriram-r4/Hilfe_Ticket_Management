@@ -1,0 +1,120 @@
+.base-container1{
+    display: block;
+    width: inherit;
+    height: 100%;
+    background-color: #f4f4ff;
+    overflow: scroll;
+  }
+  
+.type-cont{
+    display: flex;
+    align-items: center;
+    
+
+}
+.ticket-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3A2ADF;
+    width:1.5em;
+    height: 1.5em;
+    border-radius: 5%;
+    padding: 1%;
+    
+    color: white;
+    box-shadow: 1px 1px 6px -1px black;
+}
+.ticket-type {
+    font-family: "Inter-Regular", Helvetica;
+    font-size: calc(0.97rem + 1vw)!important;
+    font-weight: 500 !important;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+  
+  }
+
+  
+  .header-container{
+    grid-area: header;
+   background-color: #fff;
+    box-shadow: 0px 1px 5px 1px rgb(165, 164, 164);
+  
+  }
+  .body-container{
+    grid-area: body;
+    margin: 2%;
+    width: 95%;
+  }
+
+ 
+  
+  .bg-color{
+    background-color: #3A2ADF !important;
+    color: white !important;
+  }
+  
+  .type-text {
+    font-family: "Inter-Regular", Helvetica;
+    font-size: calc(0.77rem + 1vw)!important;
+    font-weight: 500 !important;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+  
+  }
+  
+  
+
+  @media screen and (max-width:500px) {
+  
+    .type-text {
+      font-family: "Inter-Regular", Helvetica;
+      font-size: calc(0.65rem + 1vw)!important;
+      font-weight: 500 !important;
+      left: 0;
+      letter-spacing: 0;
+      line-height: normal;
+    
+    }
+  }
+  
+  .files input {
+    outline: 2px dashed #3A2ADF;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    height: 20em !important;
+    text-align: center !important;  
+    width: 100% !important;  
+    background-color: white;
+    border: 1px solid rgb(224, 221, 221);
+    content: "Drop your files here...";
+    padding-left: calc(.5vw + 25%);
+    padding-top: 10em;
+
+}
+
+
+
+.attach-icon{
+ display:inline-block;
+ position: relative;
+  transform: rotate(45deg) !important;
+}
+
+.form-cancel{
+  background:linear-gradient( #FFFFFF, #D9CFCF ) !important;
+  border:1px solid rgb(228, 225, 225) !important;
+}
+.form-submit{
+  background: linear-gradient(#3A2ADF, #465FF5) !important;
+  border:1px solid rgb(228, 225, 225) !important;
+}
+
+.title-place::placeholder{
+  color:#B5B4B9 !important;
+}
+ 
+  

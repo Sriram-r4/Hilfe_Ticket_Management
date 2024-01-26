@@ -1,0 +1,14 @@
+.border-box{
+    width: 3em;
+    min-width: fit-content;
+    height: 3em;
+    min-height: fit-content;
+    padding: auto;
+    margin: 1%;
+    border: 1px solid black;
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}

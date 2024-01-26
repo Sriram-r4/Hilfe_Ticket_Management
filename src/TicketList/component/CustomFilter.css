@@ -1,0 +1,37 @@
+
+
+
+
+.drop-filter{   
+    display: flex;
+   align-items: flex-start;
+   justify-content: flex-start;
+   position: relative;
+
+}
+
+.view-filter{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+}
+
+.search-filter1{
+    display: flex;
+    position: relative;
+    
+}
+
+.border-box-style1{
+    border-radius: .5em;
+    width: 100%;
+    padding-inline: .5em;
+    padding-block: .2em;
+    border: 1px solid rgb(185, 179, 179);
+    background-color: white;
+}
+
+.filter-search{
+width: inherit;
+}

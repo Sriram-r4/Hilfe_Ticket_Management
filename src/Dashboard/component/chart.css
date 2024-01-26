@@ -1,0 +1,60 @@
+.data-labels{
+    display: flex;
+    position: relative;
+    align-items: center !important;
+    flex-direction: column;
+    align-self: center;
+}
+
+.shape{
+    grid-area: shape;
+    width: 1.7em;
+    height: 1.7em;
+    border: 1px solid black;
+   
+}
+.chart{
+    display: inline-flex !important;
+    position: relative;
+    width: 25em;
+    height: 25em;
+    align-items: center;
+}
+.labels{
+    grid-area: label;
+    font-size: 1.25rem !important;
+    font-weight: 400 !important;
+}
+.value{
+    grid-area: value;
+    font-size: 1.25rem !important;
+    font-weight: 400 !important;
+}
+
+.label-data{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-areas:"shape label value";
+    
+}
+
+@media screen and (max-width:500px){
+    .shape{
+        grid-area: shape;
+        width: 1.5em;
+        height: 1.5em;
+        border: .5px solid black;
+       
+    }
+    .labels{
+        grid-area: label;
+        font-size: .875rem !important;
+        font-weight: 400 !important;
+    }
+    .value{
+        grid-area: value;
+        font-size: .875rem !important;
+        font-weight: 400 !important;
+    }
+}

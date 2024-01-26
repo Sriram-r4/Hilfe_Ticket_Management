@@ -1,0 +1,34 @@
+.text {
+    color: #161515;
+    font-family: "Inter-Regular", Helvetica !important;
+    font-size: 1.071vw;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+
+}
+
+.title {
+    color: #161515;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 1.42vw;
+    font-weight: 700;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.temp-color{
+    background-color: #3A2ADF  !important;
+    text-align: center;
+  }
+
+.txt-btn{
+    font-family: "Inter-Bold ", Helvetica ;
+    font-size: 1.42vw !important;
+    color: #ffffff !important;
+    
+}
+
+

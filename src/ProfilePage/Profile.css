@@ -1,0 +1,89 @@
+.profile-pic{
+    width: 8em;
+    height: 8em;
+    border-radius: 100%;
+    border: 8px solid rgb(228, 226, 226);
+    box-shadow: 1px 1px 5px 0px black;
+    padding: 1%;
+}
+
+.profile-page-cont{
+    display: grid;
+    grid-template-columns: 2fr 10fr ;
+    grid-template-areas: "prof-cont account-cont";
+    
+}
+
+@media screen and (max-width:560px) {
+    .profile-page-cont{
+        display: grid;
+       grid-template-rows: 1fr 3fr ;
+       grid-template-columns: 1fr;
+        grid-template-areas: "prof-cont"
+        "account-cont";
+
+        
+    }  
+    .profile-cont{
+      
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin: 0px !important;
+    }
+    .account-cont{
+        margin: 1rem !important;
+    }
+}
+
+.text-label{
+    font-size: calc(1.275rem + .3vw) !important;
+}
+
+.profile-cont{
+    grid-area: prof-cont;
+   
+}
+
+.account-cont{
+    grid-area: account-cont;
+    margin: 2rem;
+    height: fit-content;
+ 
+}
+
+.acc-form-cont{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "user-cont user-cont"
+    "input-cont input-cont"
+    "input-cont input-cont"
+    "input-cont input-cont";
+    
+
+    
+}
+
+.user-cont{
+    grid-area: user-cont;
+   
+  
+}
+
+.form-input-cont{
+    grid-area: input-cont;
+    padding: 1em;
+}
+
+.form-cancel{
+    background:linear-gradient( #FFFFFF, #D9CFCF ) !important;
+    border:1px solid rgb(228, 225, 225) !important;
+  }
+  .form-submit{
+    background: linear-gradient(#3A2ADF, #465FF5) !important;
+    border:1px solid rgb(228, 225, 225) !important;
+  }
+  

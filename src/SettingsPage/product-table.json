@@ -1,0 +1,15 @@
+[
+    {
+        "sno": 1,
+        "category": "product1"
+    },
+    {
+        "sno": 2,
+        "category": "product2"
+    },
+    {
+        "sno": 3,
+        "category": "product3"
+    }
+
+]

@@ -1,0 +1,39 @@
+.head2 {
+    width: 100% !important;
+    display: block;
+    top:0;
+    position: sticky;
+    z-index: 1;
+    height: fit-content;
+}
+
+.profile-box {
+    grid-area: profile;
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    
+}
+.icon-circle{
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.text-account {
+    font-size: calc(1.375rem + .2vw);
+    width: fit-content;
+
+}
+
+.profile-icon {
+    width: 1em;
+    height: 1em;
+    margin-inline: auto;
+}
